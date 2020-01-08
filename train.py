@@ -8,8 +8,8 @@ from keras.optimizers import Adam
 import numpy as np
 import matplotlib.pyplot as plt
 
-batch_size = 10
-epochs = 30
+batch_size = 128
+epochs = 10
 num_classes = 10
 
 # データの読み込み
@@ -52,8 +52,8 @@ hist = model.fit(x_train, y_train,
               validation_data=(x_test, y_test))
 
 model_json_str = model.to_json()
-open('cifar10_30_model.json', 'w').write(model_json_str)
-model.save_weights('cifar10_30_weights.h5')
+open('10_model.json', 'w').write(model_json_str)
+model.save_weights('10_weights.h5')
 print('model saved')
 
 score = model.evaluate(x_test, y_test,verbose=0)
@@ -66,7 +66,7 @@ plt.plot(hist.history['val_acc'])
 plt.title('Accuracy')
 plt.legend(['train', 'test'], loc='upper left')
 # plt.show()
-plt.savefig("cifar10_30_acc.png")
+plt.savefig("10_acc.png")
 
 plt.cla()
 
@@ -76,6 +76,6 @@ plt.plot(hist.history['val_loss'])
 plt.title('Loss')
 plt.legend(['train', 'test'], loc='upper left')
 # plt.show()
-plt.savefig("cifar10_30_loss.png")
+plt.savefig("10_loss.png")
 
 
